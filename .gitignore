@@ -36,3 +36,4 @@ terraform.rc
 *.pem
 aws-key
 aws-key.pub
+*.out

@@ -13,12 +13,16 @@ resource "aws_db_instance" "db" {
   engine                      = "mysql"
   engine_version              = "5.7"
   instance_class              = "db.t3.micro"
-  # manage_master_user_password = true
   username                    = "localadm"
   password                    = "localadm"
   parameter_group_name        = "default.mysql5.7"
   db_subnet_group_name        = aws_db_subnet_group.db_subnet_g.name
   vpc_security_group_ids      = [var.sg]
+  multi_az                    = true
   # final_snapshot_identifier = "old"
   skip_final_snapshot         = true
+
+  tags = {
+    Name = "Terraform MySQL RDS DB "
+  }
 }

@@ -19,7 +19,6 @@ resource "aws_db_instance" "db" {
   db_subnet_group_name        = aws_db_subnet_group.db_subnet_g.name
   vpc_security_group_ids      = [var.sg]
   multi_az                    = true
-  # final_snapshot_identifier = "old"
   skip_final_snapshot         = true
 
   tags = {

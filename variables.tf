@@ -41,12 +41,3 @@ variable "instance_type_project" {
   type        = string
   default     = "t3.micro"
 }
-
-
-# # Used in the Terrafile.tf to populate the DB module
-
-# variable "instance_type_project" {
-#   description = "Instance type used in this project"
-#   type = string
-#   default = "t3.micro"
-# }

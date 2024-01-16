@@ -30,9 +30,8 @@ resource "aws_instance" "ec2" {
   subnet_id                   = var.subnet
   vpc_security_group_ids      = [var.sg]
   associate_public_ip_address = true
-  # user_data = templatefile("./modules/ec2/install_webserver.sh",{add_db = var.db_add})
-  user_data            = file("./modules/ec2/user_data.sh")
-  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
+  user_data                   = file("./modules/ec2/user_data.sh")
+  iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
 
   tags = {
     Name = "Terraform Web EC2 Instance"
@@ -43,8 +42,6 @@ resource "aws_iam_role_policy" "secret_policy" {
   name = "TerraformReadSecretsInlinePolicy"
   role = aws_iam_role.ec2_secret.id
 
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

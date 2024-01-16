@@ -9,25 +9,6 @@ resource "aws_db_subnet_group" "db_subnet_g" {
   }
 }
 
-# resource "aws_db_instance" "db" {
-#   allocated_storage           = 10
-#   db_name                     = "mydb"
-#   engine                      = "mysql"
-#   engine_version              = "5.7"
-#   instance_class              = "db.t3.micro"
-#   username                    = "localadm"
-#   password                    = "localadm"
-#   parameter_group_name        = "default.mysql5.7"
-#   db_subnet_group_name        = aws_db_subnet_group.db_subnet_g.name
-#   vpc_security_group_ids      = [var.sg]
-#   multi_az                    = true
-#   skip_final_snapshot         = true
-
-#   tags = {
-#     Name = "Terraform MySQL RDS DB "
-#   }
-# }
-
 resource "random_password" "password" {
   length           = 16
   special          = true
@@ -42,11 +23,9 @@ resource "aws_rds_cluster" "aurora_db" {
   vpc_security_group_ids = [var.sg]
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_g.name
   database_name          = "immersionday"
-  # master_username        = local.db_creds.username
-  # master_password        = local.db_creds.password
-  master_username     = var.master_username
-  master_password     = random_password.password.result
-  skip_final_snapshot = true
+  master_username        = var.master_username
+  master_password        = random_password.password.result
+  skip_final_snapshot    = true
 
   tags = {
     Name = "Terraform Aurora Cluster"
@@ -69,7 +48,6 @@ resource "aws_secretsmanager_secret" "secret_db" {
   recovery_window_in_days        = 0
 }
 
-
 resource "aws_secretsmanager_secret_version" "sversion" {
   secret_id     = aws_secretsmanager_secret.secret_db.id
   secret_string = <<EOF
@@ -84,15 +62,3 @@ resource "aws_secretsmanager_secret_version" "sversion" {
    }
 EOF
 }
-
-# data "aws_secretsmanager_secret" "secret_db" {
-#   arn = aws_secretsmanager_secret.secret_db.arn
-# }
-
-# data "aws_secretsmanager_secret_version" "creds" {
-#   secret_id = data.aws_secretsmanager_secret.secret_db.arn
-# }
-
-# locals {
-#   db_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)
-# }

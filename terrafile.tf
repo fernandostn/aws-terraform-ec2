@@ -38,9 +38,8 @@ module "ec2" {
   source = "./modules/ec2"
 
   subnet        = module.network.subnet_public_id[0]
-  sg            = module.network.sg_private_web_id
+  sg            = module.network.sg_public_id
   instance_type = var.instance_type_project
-  # db_add = module.db.db_add
 }
 
 module "db" {

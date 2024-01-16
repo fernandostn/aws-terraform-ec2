@@ -7,15 +7,13 @@ Este repositório tem por objetivo apresentar uma arquitetura AWS criada atravé
 
 ## Detalhamento
 A arquitetura proposta é composta de:
-- Uma zona DNS criada no Route 53
-- Um Application Load Balance para o balanceamento das requisições
-- Um Auto Scaling Group para provisionamento automático das instâncias EC2
-- Um banco RDS com uma réplica de escrita e outra de leitura (alta disponibilidade)
+- Uma instância EC2 em uma subnet pública executando um web server Apache
+- Um cluster Aurora (MySql) com uma réplica de escrita e outra de leitura (alta disponibilidade)
 - Uma VPC
 - Duas subnets públicas, uma em cada zona de disponibilidade
-- Duas subnets privadas para recursos de computação, uma em cada zona de disponibilidade
 - Duas subnets privadas para recursos de banco de dados, uma em cada zona de disponibilidade
 - Um Internet Gateway para acesso à Internet
-- Um NAT Gateway para acesso à Internet a partir das subnets privadas
+- Um recurso do Secrets Manager para acesso da instância EC2 ao cluster Aurora
+- Uma role do IAM associada à instância EC2 para acesso ao cluster Aurora
 
 ## Módulos Terraform

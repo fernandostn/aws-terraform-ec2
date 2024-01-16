@@ -3,7 +3,7 @@
 ## Objetivo
 Este repositório tem por objetivo apresentar uma arquitetura AWS criada através do Terraform. Esta arquitetura é apresentada de acordo com o diagrama abaixo:
 
-![AWS Architecure - v1](./images/aws-architecture-v1.jpg)
+![AWS Architecure - v1](./images/aws-terraform-ec2.jpg)
 
 ## Detalhamento
 A arquitetura proposta é composta de:

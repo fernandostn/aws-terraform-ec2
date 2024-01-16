@@ -19,10 +19,14 @@ A arquitetura proposta é formada por:
 ## Módulos Terraform
 Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este projeto utiliza três módulos que criam os recursos relacionados entre si:
 
-#Network
+## Inputs
 
-| Nome | Descrição | Tipo | Default | Requerido |
-| -------------- | -------------- | ------------- | ------------- | ------------- |
-| vpc_cidr | CIDR da VPC a ser criada | String | "10.0.0.0/16" |
+| Nome | Descrição | Tipo | Default |
+| -------------- | -------------- | ------------- | ------------- |
+| owner_project | Tag de identificação para todos os recursos criados na AWS | String | `"Fernando Santana"` |
+| managed_by_project | Tag de identificação para todos os recursos criados na AWS | String | `"IAC Terraform"` |
+| region_project | Região onde será criado o projeto | String | `"us-west-2"` |
+| vpc_cidr | CIDR da VPC a ser criada | String | `"10.0.0.0/16"` |
 | az_count | Quantidade de AZs | Number | 2 |
+| instance_type | Tipo da Instância EC2 a ser criada | String | `"t3.micro"` |
 

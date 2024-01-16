@@ -11,7 +11,7 @@ terraform {
   backend "s3" {
     bucket = "fss-remotestate2"
     key    = "aws/terraform.tfstate"
-    region = "us-west-2"
+    region = var.region_project
   }
 }
 

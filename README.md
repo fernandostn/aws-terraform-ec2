@@ -20,7 +20,7 @@ A arquitetura proposta é formada por:
 Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este projeto utiliza três módulos que criam os recursos relacionados entre si:
 
 
-|      Nome      |   Descrição    |     Tipo      |    Default    |   Requerido   |
+| Nome | Descrição | Tipo | Default | Requerido |
 | -------------- | -------------- | ------------- | ------------- | ------------- |
 | vpc_cidr  | CIDR da VPC a ser criada  | String | "10.0.0.0/16" |
 | az_count  | Quantidade de AZs | Number | 2 |

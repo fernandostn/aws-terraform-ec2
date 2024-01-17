@@ -1,6 +1,5 @@
 # aws-terraform-ec2
 
-## Objetivo
 Este projeto apresenta uma arquitetura AWS para uma aplicação Web, hospedada em uma instância EC2 e com acesso à um cluster multi-az MySQL do Amazon Aurora (alta disponibilidade):
 
 ![AWS Architecure - v1](./images/aws-terraform-ec2.png)

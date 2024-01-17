@@ -19,6 +19,10 @@ A arquitetura proposta é formada por:
 ## Módulos Terraform
 Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este projeto utiliza três módulos que criam os recursos relacionados entre si:
 
+- Network
+- DB
+- EC2
+
 ## Inputs
 
 | Nome | Descrição | Tipo | Default |
@@ -30,3 +34,12 @@ Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este pro
 | az_count | Quantidade de AZs | Number | 2 |
 | instance_type | Tipo da Instância EC2 a ser criada | String | `"t3.micro"` |
 
+## Outputs
+
+| Nome | Descrição | Módulo | Utilizado como input em |
+| -------------- | -------------- | ------------- | ------------- |
+| subnet_public_id | ID da subnet pública criada | Network | Módulo EC2 |
+| subnet_private_db_id | ID da subent privada (banco de dados) criada | Network | Módulo DB |
+| sg_public_id | Security Group público criado | Network | Módulo EC2 |
+| sg_private_db_id | Security Group privado (banco de dados) criado | Network | Módulo DB |
+| ec2_public_dns | Endereço público da instância EC2 | EC2 | Output para o usuário |

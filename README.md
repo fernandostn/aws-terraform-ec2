@@ -18,9 +18,9 @@ A arquitetura proposta é formada por:
 ## Módulos Terraform
 Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este projeto utiliza três módulos que criam os recursos relacionados entre si:
 
-- Network
-- DB
-- EC2
+### Network
+### DB
+### EC2
 
 ## Inputs
 
@@ -35,7 +35,7 @@ Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este pro
 
 ## Outputs
 
-| Nome | Descrição | Módulo | Utilizado como input em |
+| Nome | Descrição | Módulo | Utilizado em |
 | -------------- | -------------- | ------------- | ------------- |
 | subnet_public_id | ID da subnet pública criada | Network | Módulo EC2 |
 | subnet_private_db_id | ID da subent privada (banco de dados) criada | Network | Módulo DB |

@@ -19,7 +19,6 @@ A arquitetura proposta é formada por:
 Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este projeto utiliza três módulos que criam os recursos relacionados entre si:
 
 ### Network
-
 - VPC
 - Subnets pública e privada
 - Internet Gateway
@@ -33,10 +32,16 @@ Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este pro
 ### EC2
 - Instância EC2 com as seguintes características:
     - AMI Amazon Linux
-
+    - User Data que executa um Shell Script criado a partir de exemplo de aplicação disponiblizado pela Amazon em https://static.us-east-1.prod.workshops.aws/public/dd38a0a0-ae47-43f1-9065-f0bbcb15f684/assets/immersion-day-app-php7.zip
 - Key Pair para acesso SSH à instância EC2
+- IAM Role e Policy Inline que configura a permissão para a instância EC2 ler o segredo do Secrets Manager com as credenciais de banco de dados
 
 ### DB
+- Subnet Group 
+- Cluster MySQL do Amazon Aurora
+- Duas instâncias do cluster em zonas de disponibilidade distintas fins de alta disponibilidade
+- Segredo do Secrets Manager para armazenar as credenciais do banco de dados
+
 
 ## Inputs
 

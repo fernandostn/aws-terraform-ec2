@@ -32,7 +32,7 @@ Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este pro
 
 ### EC2
 - Instância EC2 com as seguintes características:
-* AMI Amazon Linux
+    - AMI Amazon Linux
 
 - Key Pair para acesso SSH à instância EC2
 

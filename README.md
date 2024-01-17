@@ -6,7 +6,7 @@ Este projeto apresenta uma arquitetura AWS para uma aplicação Web, hospedada e
 
 ## Detalhamento
 A arquitetura proposta é formada por:
-- Uma VPC com duas zonas de disponibilidade
+- Uma VPC configurada para duas zonas de disponibilidade
 - Duas subnets públicas, uma em cada zona de disponibilidade
 - Duas subnets privadas para recursos de banco de dados, uma em cada zona de disponibilidade
 - Um Internet Gateway para acesso à Internet

@@ -19,8 +19,24 @@ A arquitetura proposta é formada por:
 Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este projeto utiliza três módulos que criam os recursos relacionados entre si:
 
 ### Network
-### DB
+
+- VPC
+- Subnets pública e privada
+- Internet Gateway
+- Route Table pública
+- Route table privada
+- Associação da Route Table pública com as subnets públicas
+- Associação da Route Table privada com as subnets privadas
+- Security Group liberando o acesso a partir da internet para as portas de SSH e HTTP na instância EC2
+- Security Group liberando o acesso a partir do SG configurado na instâcia EC2 para a porta do MySQL no cluster do Amazon Aurora
+
 ### EC2
+- Instância EC2 com as seguintes características:
+* AMI Amazon Linux
+
+- Key Pair para acesso SSH à instância EC2
+
+### DB
 
 ## Inputs
 

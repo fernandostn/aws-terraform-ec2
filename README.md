@@ -6,41 +6,41 @@ Este projeto apresenta uma arquitetura AWS para uma aplicação Web hospedada em
 
 ## Detalhamento
 A arquitetura proposta é formada por:
-- Uma VPC configurada para duas zonas de disponibilidade
-- Duas subnets públicas, uma em cada zona de disponibilidade
-- Duas subnets privadas para recursos de banco de dados, uma em cada zona de disponibilidade
-- Um Internet Gateway para acesso à Internet
-- Uma instância EC2 em uma subnet pública executando um web server
-- Um cluster multi-az MySQL do Amazon Aurora com réplicas de escrita e leitura em zonas de disponibilidade distintas
-- Um secret do Secrets Manager para acesso da instância EC2 ao cluster do Amazon Aurora
-- Uma role do IAM associada à instância EC2 para acesso ao cluster do Amazon Aurora
+- Uma VPC configurada para duas zonas de disponibilidade;
+- Duas subnets públicas, uma em cada zona de disponibilidade;
+- Duas subnets privadas para recursos de banco de dados, uma em cada zona de disponibilidade;
+- Um Internet Gateway para acesso à Internet;
+- Uma instância EC2 em uma subnet pública executando um web server;
+- Um cluster multi-az MySQL do Amazon Aurora com réplicas de escrita e leitura em zonas de disponibilidade distintas;
+- Um secret do Secrets Manager para acesso da instância EC2 ao cluster do Amazon Aurora;
+- Uma role do IAM associada à instância EC2 para acesso ao cluster do Amazon Aurora.
 
 ## Módulos Terraform
 Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este projeto utiliza três módulos que criam os recursos relacionados entre si:
 
 ### Network
-- VPC
-- Subnets pública e privada
-- Internet Gateway
-- Route Table pública
-- Route table privada
-- Associação da Route Table pública com as subnets públicas
-- Associação da Route Table privada com as subnets privadas
-- Security Group liberando o acesso a partir da internet para as portas de SSH e HTTP na instância EC2
-- Security Group liberando o acesso a partir do SG configurado na instâcia EC2 para a porta do MySQL no cluster do Amazon Aurora
+- VPC;
+- Subnets pública e privada;
+- Internet Gateway;
+- Route Table pública;
+- Route table privada;
+- Associação da Route Table pública com as subnets públicas;
+- Associação da Route Table privada com as subnets privadas;
+- Security Group liberando o acesso a partir da internet para as portas de SSH e HTTP na instância EC2;
+- Security Group liberando o acesso a partir do SG configurado na instâcia EC2 para a porta do MySQL no cluster do Amazon Aurora.
 
 ### EC2
 - Instância EC2 com as seguintes características:
-    - AMI Amazon Linux
-    - User Data que executa um Shell Script criado a partir de exemplo de aplicação disponiblizado pela Amazon em https://static.us-east-1.prod.workshops.aws/public/dd38a0a0-ae47-43f1-9065-f0bbcb15f684/assets/immersion-day-app-php7.zip
-- Key Pair para acesso SSH à instância EC2
-- IAM Role e Policy Inline que configura a permissão para a instância EC2 ler o secret do Secrets Manager com as credenciais de banco de dados
+    - AMI Amazon Linux;
+    - User Data que executa um Shell Script criado a partir de exemplo de aplicação disponiblizado pela Amazon em https://static.us-east-1.prod.workshops.aws/public/dd38a0a0-ae47-43f1-9065-f0bbcb15f684/assets/immersion-day-app-php7.zip;
+- Key Pair para acesso SSH à instância EC2;
+- IAM Role e Policy Inline que configura a permissão para a instância EC2 ler o secret do Secrets Manager com as credenciais de banco de dados.
 
 ### DB
-- Subnet Group 
-- Cluster MySQL do Amazon Aurora
-- Duas instâncias do cluster em zonas de disponibilidade distintas para fins de alta disponibilidade
-- Secret do Secrets Manager para armazenar as credenciais do banco de dados
+- Subnet Group;
+- Cluster MySQL do Amazon Aurora;
+- Duas instâncias do cluster em zonas de disponibilidade distintas para fins de alta disponibilidade;
+- Secret do Secrets Manager para armazenar as credenciais do banco de dados.
 
 
 ## Inputs

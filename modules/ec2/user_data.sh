@@ -12,7 +12,7 @@ systemctl start httpd
 #Install the web pages for our lab
 if [ ! -f /var/www/html/immersion-day-app-php7.zip ]; then
    cd /var/www/html
-   wget -O 'immersion-day-app-php7.zip' 'https://static.us-east-1.prod.workshops.aws/public/dd38a0a0-ae47-43f1-9065-f0bbcb15f684/assets/immersion-day-app-php7.zip'
+   wget -O 'immersion-day-app-php7.zip' 'https://static.us-east-1.prod.workshops.aws/public/88a8dca7-a449-45ef-8175-384d9646aea5/assets/immersion-day-app-php7.zip'
    unzip immersion-day-app-php7.zip
 fi
 ​

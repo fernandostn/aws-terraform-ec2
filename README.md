@@ -32,7 +32,7 @@ Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este pro
 ### EC2
 - Instância EC2 com as seguintes características:
     - AMI Amazon Linux
-    - User Data que executa um Shell Script criado a partir de exemplo de aplicação disponiblizado pela Amazon em https://static.us-east-1.prod.workshops.aws/public/dd38a0a0-ae47-43f1-9065-f0bbcb15f684/assets/immersion-day-app-php7.zip
+    - User Data que executa um Shell Script criado a partir de exemplo de aplicação disponiblizado pela Amazon em https://static.us-east-1.prod.workshops.aws/public/88a8dca7-a449-45ef-8175-384d9646aea5/assets/immersion-day-app-php7.zip
 - Key Pair para acesso SSH à instância EC2
 - IAM Role e Policy Inline que configura a permissão para a instância EC2 ler o secret do Secrets Manager com as credenciais de banco de dados
 

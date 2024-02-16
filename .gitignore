@@ -37,3 +37,4 @@ terraform.rc
 aws-key
 aws-key.pub
 plan.out
+.terraform*

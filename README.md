@@ -4,7 +4,7 @@ Este projeto Terraform apresenta uma arquitetura AWS para uma aplicação Web ho
 
 ![AWS Architecure - v1](./images/aws-terraform-ec2.png)
 
-Para a execução deste projeto foi utilizado o GitHub Actions com ferramenta de pipeline, executando os workflows de plan, apply e detroy.
+Para a execução deste projeto foi utilizado o GitHub Actions com ferramenta de pipeline, executando os workflows de plan, apply e destroy.
 
 ## Detalhamento
 A arquitetura proposta é formada por:
@@ -68,19 +68,19 @@ Para esta arquitetura foi utilizado o Terraform como ferramenta de IaC. Este pro
 
 ## GitHub Actions
 
-Para a execução da pipeline foi feita a configuração das secrets AWS_ACCESS_KEY_ID e AWS_SECRET_ACCESS_KEY para acesso à conta AWS onde será criada a infraestrutura da aplicação. Além disto foi criada a secret TF_VAR_aws_key_pub_project que passa para o módulo EC2 a chave pública a ser utilizada para acesso SSH. 
+Para a execução da pipeline foi feita a configuração das secrets `"AWS_ACCESS_KEY_ID"` e `"AWS_SECRET_ACCESS_KEY"` para acesso à conta AWS onde será criada a infraestrutura da aplicação. Além disto foi criada a secret `"TF_VAR_aws_key_pub_project"` que passa para o módulo EC2 a chave pública a ser utilizada para acesso SSH. 
 
 Foram criados os seguintes workflows para as devidas etapas do ciclo Terraform:
 
 ### Terraform Plan
 
-Este workflow é executado de forma automática no momento em que ocorre um push no repositório. Neste workflow são executados os comandos terraform init, terraform validate e terraform plan.
+Este workflow é executado de forma automática no momento em que ocorre um push no repositório. Neste workflow são executados os comandos `"terraform init"`, `"terraform validate"` e `"terraform plan"`.
 
 ### Terraform Apply
 
-Este workflow é executado de forma manual (workflow_dispatch). Neste workflow são executados os comandos terraform init e terraform apply -auto-approve.
+Este workflow é executado de forma manual (workflow_dispatch). Neste workflow são executados os comandos `"terraform init"` e `"terraform apply -auto-approve"`.
 
 ### Terraform Destroy
 
-Este workflow é executado de forma manual (workflow_dispatch). Neste workflow são executados os comandos terraform init e terraform destroy -auto-approve.
+Este workflow é executado de forma manual (workflow_dispatch). Neste workflow são executados os comandos `"terraform init"` e `"terraform destroy -auto-approve"`.
 

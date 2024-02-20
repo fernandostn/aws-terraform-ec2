@@ -9,3 +9,7 @@ variable "subnet" {
 variable "sg" {
   description = "Security Group created in the network module (Input in the Terrafile of the project)"
 }
+
+variable "aws_key_pub"{
+  description = "Public Key used in the EC2 creation (Input in the Terrafile of the project)"
+}

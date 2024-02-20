@@ -20,7 +20,8 @@ data "aws_ami" "amazon_linux" {
 }
 resource "aws_key_pair" "key" {
   key_name   = "terraform_aws_key"
-  public_key = file("./modules/ec2/aws-key.pub")
+  # public_key = file("./modules/ec2/aws-key.pub")
+  public_key = var.aws_key_pub
 }
 
 resource "aws_instance" "ec2" {

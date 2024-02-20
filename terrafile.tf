@@ -40,6 +40,7 @@ module "ec2" {
   subnet        = module.network.subnet_public_id[0]
   sg            = module.network.sg_public_id
   instance_type = var.instance_type_project
+  aws_key_pub   = var.aws_key_pub_project
 }
 
 module "db" {

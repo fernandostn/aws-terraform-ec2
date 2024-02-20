@@ -41,3 +41,7 @@ variable "instance_type_project" {
   type        = string
   default     = "t3.micro"
 }
+
+variable "aws_key_pub_project" {
+  description = "Public Key used in the EC2 creation (Input in the GitHub Actions)"
+}

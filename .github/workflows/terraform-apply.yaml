@@ -7,7 +7,7 @@ env:
 jobs:
   terraform_apply:
     name: Terraform Apply
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     defaults:
       run:
         shell: bash
@@ -17,4 +17,4 @@ jobs:
     - name: Terraform Apply
       run: |
         terraform init
-        terraform apply -auto-approve
+        terraform apply

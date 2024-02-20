@@ -1,9 +1,6 @@
 name: Terraform Apply
 on: 
-  workflow_dispatch: {}
-  push:
-    branches:
-      - 'feature/action'
+  workflow_dispatch
 env:
   AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
   AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
@@ -22,4 +19,4 @@ jobs:
     - name: Terraform Apply
       run: |
         terraform init
-        terraform apply
+        terraform apply -auto-approve
